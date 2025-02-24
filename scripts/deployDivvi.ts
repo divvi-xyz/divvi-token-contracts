@@ -43,13 +43,25 @@ async function main() {
     throw new Error('No owner address configured!')
   }
 
-  console.log(`Deploying ${CONTRACT_NAME} with OpenZeppelin Defender`)
-  const result = await hre.defender.deployProxy(
-    Divvi,
-    [config.ownerAddress, ONE_DAY],
-    { salt: config.deploySalt },
-  )
-  const address = await result.getAddress()
+  let address: string
+
+  if (hre.network.name === 'mainnet') {
+    console.log(`Deploying ${CONTRACT_NAME} with OpenZeppelin Defender`)
+    const result = await hre.defender.deployProxy(
+      Divvi,
+      [config.ownerAddress, ONE_DAY],
+      { salt: config.deploySalt },
+    )
+    address = await result.getAddress()
+  } else {
+    console.log(`Deploying ${CONTRACT_NAME} with local signer`)
+    const result = await hre.upgrades.deployProxy(
+      Divvi,
+      [config.ownerAddress, ONE_DAY],
+      { salt: config.deploySalt },
+    )
+    address = await result.getAddress()
+  }
 
   console.log('\nTo verify the contract, run:')
   console.log(`yarn hardhat verify ${address} --network ${hre.network.name}`)

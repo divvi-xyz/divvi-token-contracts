@@ -50,7 +50,7 @@ We use [OpenZeppelin Defender](https://www.openzeppelin.com/defender) to manage 
 To deploy for the first time, run:
 
 ```
-yarn hardhat run scripts/deployDivvi.ts
+yarn hardhat run scripts/deployDivvi.ts --network mainnet
 ```
 
 This will initiate a proxy deployment on OpenZeppelin Defender, which requires two steps to complete - the Shared Deployer Safe wallet must sign transactions to deploy _both_ the proxy and implementation contracts. Find those steps in [Defender Dashboard](https://defender.openzeppelin.com/v2/), in the "Deploy" section for the "Celo" production environment. It deploys the implementation contract first, then the proxy one. To approve the deployment, open the deployment details and click a button to open the Safe App. If the particular Safe requires multiple signatures, ask fellow engineers for additional ones in Slack.
@@ -60,7 +60,7 @@ After both deployments are signed and completed, you should see the output in yo
 To upgrade, ensure that the `PROXY_ADDRESS` field is filled out in your `.env` file, and run:
 
 ```
-yarn hardhat run scripts/upgradeDivvi.ts
+yarn hardhat run scripts/upgradeDivvi.ts --network mainnet
 ```
 
 This will initiate a proxy upgrade on OpenZeppelin Defender, which also requires two steps to complete. First, the Deployer Safe wallet must sign a transaction to deploy the new implementation contract.
