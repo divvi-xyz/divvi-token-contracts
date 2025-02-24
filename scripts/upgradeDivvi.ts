@@ -37,11 +37,17 @@ async function main() {
   const config = await getConfig()
   const Divvi = await hre.ethers.getContractFactory(CONTRACT_NAME)
 
-  console.log(`Upgrading ${CONTRACT_NAME} with OpenZeppelin Defender`)
+  if (hre.network.name === 'mainnet') {
+    console.log(`Upgrading ${CONTRACT_NAME} with OpenZeppelin Defender`)
 
-  await hre.defender.proposeUpgradeWithApproval(config.proxyAddress, Divvi, {
-    salt: config.deploySalt,
-  })
+    await hre.defender.proposeUpgradeWithApproval(config.proxyAddress, Divvi, {
+      salt: config.deploySalt,
+    })
+  } else {
+    console.log(`Upgrading ${CONTRACT_NAME} with local signer`)
+
+    await hre.upgrades.upgradeProxy(config.proxyAddress, Divvi)
+  }
 
   console.log(
     '\nTo verify the contract, get the proxy deploy address from OpenZeppelin and run:',
