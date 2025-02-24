@@ -24,7 +24,7 @@ By default, the transfer delay is set to one day. After deploy, the following st
 
 ### Operational Wallets
 
-For the purposes of deploying and upgrading, we maintain a number of operational wallets. 
+For the purposes of deploying and upgrading, we maintain a number of operational wallets.
 
 For Mainnet deplyments and upgrades, we maintain two Safe wallets. The first of these wallets is
 used strictly for proxy and implementation deployment, and may be shared among other services. The second wallet will act as the "owner" of the contract and can _upgrade_ the contract, and _manage roles_.
