@@ -43,15 +43,13 @@ async function main() {
     throw new Error('No owner address configured!')
   }
 
-  let address: string
-
   console.log(`Deploying ${CONTRACT_NAME} with OpenZeppelin Defender`)
   const result = await hre.defender.deployProxy(
     Divvi,
     [config.ownerAddress, ONE_DAY],
     { salt: config.deploySalt },
   )
-  address = await result.getAddress()
+  const address = await result.getAddress()
 
   console.log('\nTo verify the contract, run:')
   console.log(`yarn hardhat verify ${address} --network ${hre.network.name}`)
