@@ -14,6 +14,7 @@ contract DivviToken is
 
   function initialize(address owner, uint48 transferDelay) public initializer {
     __ERC20_init('Divvi', 'DIVVI');
+    __ERC20Permit_init('Divvi');
     __AccessControlDefaultAdminRules_init(transferDelay, owner);
     __UUPSUpgradeable_init();
   }
