@@ -2,10 +2,9 @@ import { mine } from '@nomicfoundation/hardhat-toolbox-viem/network-helpers'
 import { expect } from 'chai'
 import { ethers } from 'ethers'
 import hre from 'hardhat'
-import { Address } from 'viem'
 
 const CONTRACT_NAME = 'DivviToken'
-const mockAccount1: Address = '0x0000000000000000000000000000000000000001'
+const mockAccount1 = '0x0000000000000000000000000000000000000001'
 
 describe(CONTRACT_NAME, () => {
   async function deployDivviContract() {
