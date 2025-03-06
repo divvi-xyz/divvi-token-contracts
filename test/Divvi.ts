@@ -249,7 +249,7 @@ describe(CONTRACT_NAME, () => {
         otherAccount,
       ) as typeof contract
 
-      expect(await contract.canTransfer(mockAccount1)).to.be.false
+      expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.false
 
       await expect(
         contractAsNonOwner.setPermittedSender(mockAccount1, true),
@@ -259,7 +259,7 @@ describe(CONTRACT_NAME, () => {
       )
 
       await contract.setPermittedSender(mockAccount1, true)
-      expect(await contract.canTransfer(mockAccount1)).to.be.true
+      expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.true
     })
 
     it('should allow admin to revoke permitted senders', async function () {
@@ -267,10 +267,10 @@ describe(CONTRACT_NAME, () => {
         await deployDivviContract()
 
       await contract.setPermittedSender(otherAccount, true)
-      expect(await contract.canTransfer(otherAccount)).to.be.true
+      expect(await contract.isPermittedToTransfer(otherAccount)).to.be.true
 
       await contract.setPermittedSender(otherAccount, false)
-      expect(await contract.canTransfer(otherAccount)).to.be.false
+      expect(await contract.isPermittedToTransfer(otherAccount)).to.be.false
 
       // Mint tokens to otherAccount, which has not been added to the permitted accounts
       const contractAsMinter = contract.connect(
@@ -294,7 +294,7 @@ describe(CONTRACT_NAME, () => {
         otherAccount,
       ) as typeof contract
 
-      expect(await contract.canTransfer(mockAccount1)).to.be.false
+      expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.false
 
       await expect(
         contractAsNonOwner.setPermitTransfersOnly(false),
@@ -304,7 +304,7 @@ describe(CONTRACT_NAME, () => {
       )
 
       await contract.setPermitTransfersOnly(false)
-      expect(await contract.canTransfer(mockAccount1)).to.be.true
+      expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.true
     })
   })
 })

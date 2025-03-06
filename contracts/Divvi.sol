@@ -35,7 +35,7 @@ contract DivviToken is
     address recipient,
     uint256 amount
   ) public override returns (bool) {
-    if (!canTransfer(msg.sender)) revert SenderNotPermitted();
+    if (!isPermittedToTransfer(msg.sender)) revert SenderNotPermitted();
     return super.transfer(recipient, amount);
   }
 
@@ -44,7 +44,7 @@ contract DivviToken is
     address recipient,
     uint256 amount
   ) public override returns (bool) {
-    if (!canTransfer(sender)) revert SenderNotPermitted();
+    if (!isPermittedToTransfer(sender)) revert SenderNotPermitted();
     return super.transferFrom(sender, recipient, amount);
   }
 
@@ -61,7 +61,7 @@ contract DivviToken is
     _hasTransferPermission[account] = status;
   }
 
-  function canTransfer(address account) public view returns (bool) {
+  function isPermittedToTransfer(address account) public view returns (bool) {
     return !_permitTransfersOnly || _hasTransferPermission[account];
   }
 
