@@ -24,7 +24,6 @@ contract DivviToken is
     __UUPSUpgradeable_init();
 
     _permitTransfersOnly = true;
-    _hasTransferPermission[owner] = true;
   }
 
   function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) {
