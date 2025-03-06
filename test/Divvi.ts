@@ -149,14 +149,7 @@ describe(CONTRACT_NAME, () => {
     })
   })
 
-  describe.only('transfer permission restrictions', () => {
-    // let contract, owner, permittedUser, nonPermittedUser;
-
-    // beforeEach(async function () {
-    //   ({ contract, owner, otherAccount: permittedUser } = await deployDivviContract());
-    //   nonPermittedUser = (await hre.ethers.getSigners())[2];
-    // });
-
+  describe('transfer permission restrictions', () => {
     it('should prevent non-permitted users from transferring', async function () {
       const { contract, otherAccount, owner } = await deployDivviContract()
 
