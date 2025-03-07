@@ -169,7 +169,7 @@ describe(CONTRACT_NAME, () => {
       const { contract, minterAccount, otherAccount } =
         await deployDivviContract()
 
-      await contract.setPermittedSender(otherAccount, true)
+      await contract.setSenderPermission(otherAccount, true)
 
       // Mint tokens to permitted user
       const contractAsMinter = contract.connect(
@@ -192,7 +192,7 @@ describe(CONTRACT_NAME, () => {
       const { contract, minterAccount, owner, otherAccount } =
         await deployDivviContract()
 
-      await contract.setPermittedSender(otherAccount, true)
+      await contract.setSenderPermission(otherAccount, true)
 
       // Mint tokens to permitted user
       const contractAsMinter = contract.connect(
@@ -252,13 +252,13 @@ describe(CONTRACT_NAME, () => {
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.false
 
       await expect(
-        contractAsNonOwner.setPermittedSender(mockAccount1, true),
+        contractAsNonOwner.setSenderPermission(mockAccount1, true),
       ).to.be.revertedWithCustomError(
         contract,
         'AccessControlUnauthorizedAccount',
       )
 
-      await contract.setPermittedSender(mockAccount1, true)
+      await contract.setSenderPermission(mockAccount1, true)
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.true
     })
 
@@ -266,10 +266,10 @@ describe(CONTRACT_NAME, () => {
       const { contract, otherAccount, minterAccount } =
         await deployDivviContract()
 
-      await contract.setPermittedSender(otherAccount, true)
+      await contract.setSenderPermission(otherAccount, true)
       expect(await contract.isPermittedToTransfer(otherAccount)).to.be.true
 
-      await contract.setPermittedSender(otherAccount, false)
+      await contract.setSenderPermission(otherAccount, false)
       expect(await contract.isPermittedToTransfer(otherAccount)).to.be.false
 
       // Mint tokens to otherAccount, which has not been added to the permitted accounts

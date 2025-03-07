@@ -17,6 +17,11 @@ contract DivviToken is
 
   error SenderNotPermitted();
 
+  modifier onlyPermittedToTransfer(address account) {
+    if (!isPermittedToTransfer(account)) revert SenderNotPermitted();
+    _;
+  }
+
   function initialize(address owner, uint48 transferDelay) public initializer {
     __ERC20_init('Divvi', 'DIVVI');
     __ERC20Permit_init('Divvi');
@@ -33,8 +38,7 @@ contract DivviToken is
   function transfer(
     address recipient,
     uint256 amount
-  ) public override returns (bool) {
-    if (!isPermittedToTransfer(msg.sender)) revert SenderNotPermitted();
+  ) public override onlyPermittedToTransfer(msg.sender) returns (bool) {
     return super.transfer(recipient, amount);
   }
 
@@ -42,8 +46,7 @@ contract DivviToken is
     address sender,
     address recipient,
     uint256 amount
-  ) public override returns (bool) {
-    if (!isPermittedToTransfer(sender)) revert SenderNotPermitted();
+  ) public override onlyPermittedToTransfer(sender) returns (bool) {
     return super.transferFrom(sender, recipient, amount);
   }
 
@@ -53,7 +56,7 @@ contract DivviToken is
     _permitTransfersOnly = status;
   }
 
-  function setPermittedSender(
+  function setSenderPermission(
     address account,
     bool status
   ) external onlyRole(DEFAULT_ADMIN_ROLE) {
