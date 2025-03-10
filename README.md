@@ -35,9 +35,9 @@ Additionally, we maintain another Safe wallet for the Minter role, which will be
 
 For Mainnet, the Safe addresses are as follows:
 
-- Shared Deployer Safe: [0x215bde0Ec16d1358139F624d522361c431413754](https://app.safe.global/home?safe=eth:0x215bde0Ec16d1358139F624d522361c431413754)
-- Owner Safe: [0x056E510DD2aDf29c068F84C8657D6dE80B19F139](https://app.safe.global/home?safe=eth:0x056E510DD2aDf29c068F84C8657D6dE80B19F139)
-- Minter Safe: [0x64f3196e4F8C7F3e4978bc5F79A043A49bb20fE2](https://app.safe.global/home?safe=eth:0x64f3196e4F8C7F3e4978bc5F79A043A49bb20fE2)
+- Shared Ethereum Deployer Safe: [0x871D7AB884C75eAfFE7C04f14b7F1B44C4e6C458](https://app.safe.global/home?safe=eth:0x871D7AB884C75eAfFE7C04f14b7F1B44C4e6C458)
+- Owner Safe: [0xE8e569396A7580bb38f0F77685Fd2AA00f6adBA4](https://app.safe.global/home?safe=eth:eth:0xE8e569396A7580bb38f0F77685Fd2AA00f6adBA4)
+- Minter Safe: [0xc70D9fd0ECbDF4500D089365226dA42f01bA1594](https://app.safe.global/home?safe=eth:0xc70D9fd0ECbDF4500D089365226dA42f01bA1594)
 
 ### Deployment and Upgrade Process
 
