@@ -188,7 +188,7 @@ describe(CONTRACT_NAME, () => {
       expect(await contract.balanceOf(minterAccount.address)).to.equal(1000n)
     })
 
-    it('should allow permitted users to call transferFrom', async function () {
+    it('should allow spender to call transferFrom for a permitted user', async function () {
       const { contract, minterAccount, owner, otherAccount } =
         await deployDivviContract()
 
