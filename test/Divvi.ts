@@ -159,17 +159,17 @@ describe(CONTRACT_NAME, () => {
 
       await expect(
         contractAsNonPermittedAccount.transfer(mockAccount1, 500),
-      ).to.be.revertedWithCustomError(contract, 'SenderNotPermitted')
+      ).to.be.revertedWithCustomError(contract, 'TransferNotPermitted')
       await expect(
         contractAsNonPermittedAccount.transferFrom(mockAccount1, owner, 500),
-      ).to.be.revertedWithCustomError(contract, 'SenderNotPermitted')
+      ).to.be.revertedWithCustomError(contract, 'TransferNotPermitted')
     })
 
     it('should allow permitted users to transfer', async function () {
       const { contract, minterAccount, otherAccount } =
         await deployDivviContract()
 
-      await contract.setSenderPermission(otherAccount, true)
+      await contract.setTransferPermission(otherAccount, true)
 
       // Mint tokens to permitted user
       const contractAsMinter = contract.connect(
@@ -192,7 +192,7 @@ describe(CONTRACT_NAME, () => {
       const { contract, minterAccount, owner, otherAccount } =
         await deployDivviContract()
 
-      await contract.setSenderPermission(otherAccount, true)
+      await contract.setTransferPermission(otherAccount, true)
 
       // Mint tokens to permitted user
       const contractAsMinter = contract.connect(
@@ -215,11 +215,11 @@ describe(CONTRACT_NAME, () => {
       expect(await contract.balanceOf(owner.address)).to.equal(500n)
     })
 
-    it('should allow transfers when _permitTransfersOnly is disabled', async function () {
+    it('should allow transfers when _requireTransferPermission is disabled', async function () {
       const { contract, otherAccount, owner, minterAccount } =
         await deployDivviContract()
 
-      await contract.setPermitTransfersOnly(false)
+      await contract.setRequireTransferPermission(false)
 
       // Mint tokens to otherAccount, which has not been added to the permitted accounts
       const contractAsMinter = contract.connect(
@@ -252,13 +252,13 @@ describe(CONTRACT_NAME, () => {
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.false
 
       await expect(
-        contractAsNonOwner.setSenderPermission(mockAccount1, true),
+        contractAsNonOwner.setTransferPermission(mockAccount1, true),
       ).to.be.revertedWithCustomError(
         contract,
         'AccessControlUnauthorizedAccount',
       )
 
-      await contract.setSenderPermission(mockAccount1, true)
+      await contract.setTransferPermission(mockAccount1, true)
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.true
     })
 
@@ -266,10 +266,10 @@ describe(CONTRACT_NAME, () => {
       const { contract, otherAccount, minterAccount } =
         await deployDivviContract()
 
-      await contract.setSenderPermission(otherAccount, true)
+      await contract.setTransferPermission(otherAccount, true)
       expect(await contract.isPermittedToTransfer(otherAccount)).to.be.true
 
-      await contract.setSenderPermission(otherAccount, false)
+      await contract.setTransferPermission(otherAccount, false)
       expect(await contract.isPermittedToTransfer(otherAccount)).to.be.false
 
       // Mint tokens to otherAccount, which has not been added to the permitted accounts
@@ -284,10 +284,10 @@ describe(CONTRACT_NAME, () => {
       // Otheraccount is able to transfer
       await expect(
         contractAsOtherAccount.transfer(mockAccount1, 500),
-      ).to.be.revertedWithCustomError(contract, 'SenderNotPermitted')
+      ).to.be.revertedWithCustomError(contract, 'TransferNotPermitted')
     })
 
-    it('should allow only admin to toggle _permitTransfersOnly', async function () {
+    it('should allow only admin to toggle _requireTransferPermission', async function () {
       const { contract, otherAccount } = await deployDivviContract()
 
       const contractAsNonOwner = contract.connect(
@@ -297,13 +297,13 @@ describe(CONTRACT_NAME, () => {
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.false
 
       await expect(
-        contractAsNonOwner.setPermitTransfersOnly(false),
+        contractAsNonOwner.setRequireTransferPermission(false),
       ).to.be.revertedWithCustomError(
         contract,
         'AccessControlUnauthorizedAccount',
       )
 
-      await contract.setPermitTransfersOnly(false)
+      await contract.setRequireTransferPermission(false)
       expect(await contract.isPermittedToTransfer(mockAccount1)).to.be.true
     })
   })

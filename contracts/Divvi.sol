@@ -13,12 +13,12 @@ contract DivviToken is
   bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
 
   mapping(address => bool) private _hasTransferPermission;
-  bool private _permitTransfersOnly;
+  bool private _requireTransferPermission;
 
-  error SenderNotPermitted();
+  error TransferNotPermitted();
 
   modifier onlyPermittedToTransfer(address account) {
-    if (!isPermittedToTransfer(account)) revert SenderNotPermitted();
+    if (!isPermittedToTransfer(account)) revert TransferNotPermitted();
     _;
   }
 
@@ -28,7 +28,7 @@ contract DivviToken is
     __AccessControlDefaultAdminRules_init(transferDelay, owner);
     __UUPSUpgradeable_init();
 
-    _permitTransfersOnly = true;
+    _requireTransferPermission = true;
   }
 
   function mint(address to, uint256 amount) external onlyRole(MINTER_ROLE) {
@@ -50,13 +50,13 @@ contract DivviToken is
     return super.transferFrom(sender, recipient, amount);
   }
 
-  function setPermitTransfersOnly(
+  function setRequireTransferPermission(
     bool status
   ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-    _permitTransfersOnly = status;
+    _requireTransferPermission = status;
   }
 
-  function setSenderPermission(
+  function setTransferPermission(
     address account,
     bool status
   ) external onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -64,7 +64,7 @@ contract DivviToken is
   }
 
   function isPermittedToTransfer(address account) public view returns (bool) {
-    return !_permitTransfersOnly || _hasTransferPermission[account];
+    return !_requireTransferPermission || _hasTransferPermission[account];
   }
 
   function _authorizeUpgrade(
