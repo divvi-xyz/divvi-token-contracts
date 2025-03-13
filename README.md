@@ -43,7 +43,7 @@ For Mainnet, the Safe addresses are as follows:
 
 #### Mainnet
 
-We use [OpenZeppelin Defender](https://www.openzeppelin.com/defender) to manage deployments and upgrades on Mainnet. Before beginning a deployment, make sure that your `.env` file is set up correctly. Namely, make sure to get the `DEFENDER_API_KEY`, `DEFENDER_API_SECRET`, `ETHERSCAN_API_KEY`, `ETHEREUM_RPC_URL` values from GSM and copy them in. (Ideally we could inject these config values into Hardhat automatically, but we haven't found a way to do that.) Also include `OWNER_ADDRESS` to set the initial owner for the proxy. This should be the _Owner Safe_ address listed above.
+We use [OpenZeppelin Defender](https://www.openzeppelin.com/defender) to manage deployments and upgrades on Mainnet. Before beginning a deployment, make sure that your `.env` file is set up correctly. Namely, make sure to get the `DEFENDER_API_KEY`, `DEFENDER_API_SECRET`, `ETHERSCAN_API_KEY`, `DEPLOY_SALT` values from GSM and copy them in. (Ideally we could inject these config values into Hardhat automatically, but we haven't found a way to do that.) Also include `OWNER_ADDRESS` to set the initial owner for the proxy. This should be the _Owner Safe_ address listed above.
 
 💡 For a smooth experience ensure you've been invited to Defender for Divvi and are added as a signer to the Deployer and Owner safes.
 
@@ -53,7 +53,7 @@ To deploy for the first time, run:
 yarn hardhat run scripts/deployDivvi.ts --network mainnet
 ```
 
-This will initiate a proxy deployment on OpenZeppelin Defender, which requires two steps to complete - the Shared Deployer Safe wallet must sign transactions to deploy _both_ the proxy and implementation contracts. Find those steps in [Defender Dashboard](https://defender.openzeppelin.com/v2/), in the "Deploy" section for the "Celo" production environment. It deploys the implementation contract first, then the proxy one. To approve the deployment, open the deployment details and click a button to open the Safe App. If the particular Safe requires multiple signatures, ask fellow engineers for additional ones in Slack.
+This will initiate a proxy deployment on OpenZeppelin Defender, which requires two steps to complete - the Shared Deployer Safe wallet must sign transactions to deploy _both_ the proxy and implementation contracts. Find those steps in [Defender Dashboard](https://defender.openzeppelin.com/v2/), in the "Deploy" section for the "Ethereum" production environment. It deploys the implementation contract first, then the proxy one. To approve the deployment, open the deployment details and click a button to open the Safe App. If the particular Safe requires multiple signatures, ask fellow engineers for additional ones in Slack.
 
 After both deployments are signed and completed, you should see the output in your terminal with a command to run to verify both the proxy and implementation contracts on the block explorers.
 
