@@ -2,9 +2,13 @@
 
 Repository containing contracts relating to the DIVVI token.
 
+## Proxy Address
+
+Ethereum mainnet: 0x481186A028417598E6869645f3c851E0A973e3C2
+
 ## Deployment Plan
 
-The `Divvi` contract is enabled to support arbitrary _roles-based permissions_. Currently,
+The `DivviToken` contract is enabled to support arbitrary _roles-based permissions_. Currently,
 semantics exist for only two roles, `DEFAULT_ADMIN_ROLE` and `MINTER_ROLE`.
 
 - `DEFAULT_ADMIN_ROLE` is able to manage permissions (assigning/revoking addresses to roles), and is the sole address able to authorize contract upgrades. Only one address may possess this role.
@@ -53,7 +57,7 @@ To deploy for the first time, run:
 yarn hardhat run scripts/deployDivvi.ts --network mainnet
 ```
 
-This will initiate a proxy deployment on OpenZeppelin Defender, which requires two steps to complete - the Shared Deployer Safe wallet must sign transactions to deploy _both_ the proxy and implementation contracts. Find those steps in [Defender Dashboard](https://defender.openzeppelin.com/v2/), in the "Deploy" section for the "Ethereum" production environment. It deploys the implementation contract first, then the proxy one. To approve the deployment, open the deployment details and click a button to open the Safe App. If the particular Safe requires multiple signatures, ask fellow engineers for additional ones in Slack.
+This will initiate a proxy deployment on OpenZeppelin Defender, which requires two steps to complete - the Shared Deployer Safe wallet must sign transactions to deploy _both_ the proxy and implementation contracts. Note that the Shared Deployer Safe wallet is a multisig, so another team member must be available to sign the transactions. Find those steps in [Defender Dashboard](https://defender.openzeppelin.com/v2/), in the "Deploy" section for the "Ethereum" production environment. It deploys the implementation contract first, then the proxy one. To approve the deployment, open the deployment details and click a button to open the Safe App. If the particular Safe requires multiple signatures, ask fellow engineers for additional ones in Slack.
 
 After both deployments are signed and completed, you should see the output in your terminal with a command to run to verify both the proxy and implementation contracts on the block explorers.
 
@@ -70,6 +74,8 @@ both the proxy and implementation contracts on the block explorers.
 ### Metadata
 
 Metadata about proxy and implementation deployments is automatically generated and stored in the `.openzeppelin/` directory, which should be checked into version control.
+
+The contract ABI can be found on Etherscan.
 
 ## Operations
 
