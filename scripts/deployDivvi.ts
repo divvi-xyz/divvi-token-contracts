@@ -30,18 +30,13 @@ async function getConfig() {
   }
 }
 
-const CONTRACT_NAME = 'Divvi'
+const CONTRACT_NAME = 'DivviToken'
 
 const ONE_DAY = 60 * 60 * 24
 
 async function main() {
   const config = await getConfig()
   const Divvi = await hre.ethers.getContractFactory(CONTRACT_NAME)
-
-  const ownerAddress = process.env.SAFE_OWNER_ADDRESS
-  if (!ownerAddress) {
-    throw new Error('No owner address configured!')
-  }
 
   let address: string
 
