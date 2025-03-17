@@ -31,7 +31,7 @@ async function getConfig() {
   }
 }
 
-const CONTRACT_NAME = 'Divvi'
+const CONTRACT_NAME = 'DivviToken'
 
 async function main() {
   const config = await getConfig()
