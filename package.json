@@ -27,7 +27,7 @@
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.13",
     "@nomicfoundation/hardhat-viem": "^2.0.6",
-    "@openzeppelin/contracts": "^5.2.0",
+    "@openzeppelin/contracts": "^5.3.0",
     "@types/chai": "^4.3.20",
     "@types/chai-as-promised": "^7.1.8",
     "@types/mocha": "^10.0.10",
@@ -39,16 +39,16 @@
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
-    "hardhat": "^2.22.19",
+    "hardhat": "^2.23.0",
     "hardhat-gas-reporter": "^2.2.2",
-    "knip": "^5.46.5",
+    "knip": "^5.50.2",
     "prettier": "^3.5.3",
     "prettier-plugin-solidity": "^1.4.2",
     "solhint": "^4.5.4",
     "solidity-coverage": "^0.8.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "viem": "^2.25.0"
+    "viem": "^2.26.3"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
