@@ -58,6 +58,6 @@
     "@valora/secrets-loader": "^1.0.0",
     "dotenv": "^16.5.0",
     "ethers": "^6.14.3",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   }
 }
