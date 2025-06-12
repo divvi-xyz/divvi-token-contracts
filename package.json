@@ -51,7 +51,7 @@
     "viem": "^2.30.6"
   },
   "dependencies": {
-    "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.9",
     "@nomicfoundation/hardhat-ethers": "^3.0.8",
     "@openzeppelin/contracts-upgradeable": "^5.3.0",
     "@openzeppelin/hardhat-upgrades": "^3.9.0",
