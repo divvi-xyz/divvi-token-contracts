@@ -23,7 +23,7 @@
     "knip": "knip"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-network-helpers": "^1.0.12",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.13",
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.14",
     "@nomicfoundation/hardhat-viem": "^2.0.6",
@@ -39,7 +39,7 @@
     "chai": "^5.2.0",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
-    "hardhat": "^2.24.3",
+    "hardhat": "^2.25.0",
     "hardhat-gas-reporter": "^2.3.0",
     "knip": "^5.61.2",
     "prettier": "^3.5.3",
@@ -48,7 +48,7 @@
     "solidity-coverage": "^0.8.16",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "viem": "^2.31.3"
+    "viem": "^2.31.4"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.9",
