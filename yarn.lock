@@ -1129,10 +1129,10 @@
     axios "^1.7.4"
     lodash "^4.17.21"
 
-"@openzeppelin/hardhat-upgrades@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-3.9.0.tgz#3317292f5e338012d0263bfd0f8458466c3fb0a8"
-  integrity sha512-7YYBSxRnO/X+tsQkVgtz3/YbwZuQPjbjQ3m0A/8+vgQzdPfulR93NaFKgZfMonnrriXb5O/ULjIDPI+8nuqtyQ==
+"@openzeppelin/hardhat-upgrades@^3.9.1":
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-3.9.1.tgz#7235edb9b2cd1ec3212cb92275daca7f1869732a"
+  integrity sha512-pSDjlOnIpP+PqaJVe144dK6VVKZw2v6YQusyt0OOLiCsl+WUzfo4D0kylax7zjrOxqy41EK2ipQeIF4T+cCn2A==
   dependencies:
     "@openzeppelin/defender-sdk-base-client" "^2.1.0"
     "@openzeppelin/defender-sdk-deploy-client" "^2.1.0"
