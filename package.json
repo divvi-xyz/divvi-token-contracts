@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
-    "@nomicfoundation/hardhat-ethers": "^3.0.9",
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
     "@openzeppelin/contracts-upgradeable": "^5.3.0",
     "@openzeppelin/hardhat-upgrades": "^3.9.1",
     "@valora/secrets-loader": "^1.0.0",
