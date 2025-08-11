@@ -25,8 +25,8 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.1.0",
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
-    "@nomicfoundation/hardhat-verify": "^2.1.0",
-    "@nomicfoundation/hardhat-viem": "^2.1.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.1",
+    "@nomicfoundation/hardhat-viem": "^2.1.1",
     "@openzeppelin/contracts": "^5.4.0",
     "@types/chai": "^5.2.2",
     "@types/chai-as-promised": "^7.1.8",
@@ -39,7 +39,7 @@
     "chai": "^5.2.1",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.32.0",
-    "hardhat": "^2.26.1",
+    "hardhat": "^2.26.2",
     "hardhat-gas-reporter": "^2.3.0",
     "knip": "^5.62.0",
     "prettier": "^3.6.2",
@@ -48,7 +48,7 @@
     "solidity-coverage": "^0.8.16",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "viem": "^2.33.0"
+    "viem": "^2.33.3"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
