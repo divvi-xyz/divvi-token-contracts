@@ -56,7 +56,7 @@
     "@openzeppelin/contracts-upgradeable": "^5.4.0",
     "@openzeppelin/hardhat-upgrades": "^3.9.1",
     "@valora/secrets-loader": "^1.0.0",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "ethers": "^6.15.0",
     "yargs": "^18.0.0"
   }
