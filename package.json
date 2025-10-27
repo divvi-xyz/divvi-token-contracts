@@ -28,7 +28,7 @@
     "@nomicfoundation/hardhat-verify": "^2.1.1",
     "@nomicfoundation/hardhat-viem": "^2.1.1",
     "@openzeppelin/contracts": "^5.4.0",
-    "@types/chai": "^5.2.2",
+    "@types/chai": "^5.2.3",
     "@types/chai-as-promised": "^7.1.8",
     "@types/mocha": "^10.0.10",
     "@types/yargs": "^17.0.33",
