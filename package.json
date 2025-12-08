@@ -41,14 +41,14 @@
     "eslint-plugin-import": "^2.32.0",
     "hardhat": "^2.27.1",
     "hardhat-gas-reporter": "^2.3.0",
-    "knip": "^5.70.2",
+    "knip": "^5.71.0",
     "prettier": "^3.7.4",
     "prettier-plugin-solidity": "^2.2.0",
     "solhint": "^4.5.4",
     "solidity-coverage": "^0.8.16",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
-    "viem": "^2.40.3"
+    "viem": "^2.41.2"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
